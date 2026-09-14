@@ -8,12 +8,13 @@
 // --------------------
 // This program practices interfaces
 // ====================
+// Lab requirement: The shapes are circles and squares that can vary in size determined by their side length or radiuses in meters.
 public class Square implements Shape {
-    private double side;
+    private double length;
     private String color;
 
-    public Square(double parmSide, String parmColor) {
-        this.side = parmSide;
+    public Square(double parmLength, String parmColor) {
+        this.length = parmLength;
         this.color = parmColor;
     }
 
@@ -21,7 +22,14 @@ public class Square implements Shape {
         return color;
     }
 
+    // The Area of a shape is calculated through the following formulas:
+    // Square = L * L
     public double getArea() {
-        return side * side;
+        return length * length;
+    }
+
+    public String toString() {
+        // return "Square - Color: " + color + ", Area: " + getArea();
+        return String.format("Square - Color: %s, Area: %.2f", color, getArea());
     }
 }
