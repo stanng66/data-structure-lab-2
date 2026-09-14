@@ -30,7 +30,7 @@ public class Main {
     ArrayList<Shape> shapes = new ArrayList<Shape>();
 
     System.out.println("====================");
-    System.out.println("Enter shapes (Circle R color) or (Square L color). Type 'end' to finish:");
+    System.out.println("Enter shapes (circle, radius, color) or (square, length, color). Type 'end' to calculate total area of all entered color shapes:");
     System.out.println("====================");
 
     while (true) {
@@ -41,13 +41,46 @@ public class Main {
       }
 
       String[] parts = line.split(" ");
+
+      // Check correct format
+      if (parts.length != 3) {
+        System.out.println("Invalid input format. Please enter in the format: shape size color");
+        continue;
+      }
+
       String type = parts[0];
-      double size = Double.parseDouble(parts[1]);
+      String sizeText = parts[1];
       String color = parts[2];
 
-      if (type.equalsIgnoreCase("Circle")) {
+      // Check shape type
+      if (!type.equalsIgnoreCase("circle") && !type.equalsIgnoreCase("square")) {
+        System.out.println("Invalid shape type. Please enter 'circle' or 'square'.");
+        continue;
+      }
+
+      // Check colour
+      if (!color.equalsIgnoreCase("red") && !color.equalsIgnoreCase("green") && !color.equalsIgnoreCase("blue")) {
+        System.out.println("Invalid color. Please enter 'red', 'green', or 'blue'.");
+        continue;
+      }
+
+      // Check number is positive
+      double size;
+      try {
+        size = Double.parseDouble(sizeText);
+        if (size <= 0) {
+          System.out.println("length/radius must be a positive number.");
+          continue;
+        }
+      } catch (NumberFormatException e) {
+        System.out.println("Invalid size. Please enter a positive number.");
+        continue;
+      }
+
+      // If everything is valid, create the shape
+      if (type.equalsIgnoreCase("circle")) {
         shapes.add(new Circle(size, color));
-      } else if (type.equalsIgnoreCase("Square")) {
+      } else if (type.equalsIgnoreCase("square")) {
         shapes.add(new Square(size, color));
       }
     }
