@@ -15,15 +15,6 @@ import java.util.ArrayList;
 public class Main {
   
   public static void main(String[] args) {
-    /* Shape circle1 = new Circle(0.5, "blue");
-    Shape circle2 = new Circle(0.2, "red");
-    Shape circle3 = new Circle(1, "green");
-    Shape circle4 = new Circle(1, "blue");
-    Shape square1 = new Square(1, "blue");
-    Shape square2 = new Square(1.5, "green");
-    Shape square3 = new Square(1, "green");
-    Shape square4 = new Square(2, "blue");
-    Shape square5 = new Square(0.5, "red");*/
 
     @SuppressWarnings("resource")
     Scanner scanner = new Scanner(System.in);
